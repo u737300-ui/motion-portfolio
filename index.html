@@ -87,7 +87,7 @@ section.s{padding:130px 48px;background:var(--bg2)}
 .pole span.pb{bottom:7%}
 .pole:before,.pole:after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e8e0cc,#6b5f45 60%,#221d13)}
 .pole:before{top:-13px}.pole:after{bottom:-13px}
-.scard{position:absolute;left:50%;top:50%;width:230px;background:var(--bg2);border:1px solid #ffffff26;box-shadow:0 24px 60px #000a}
+.scard{position:absolute;left:50%;top:50%;width:230px;margin:0;background:var(--bg2);border:1px solid #ffffff26;box-shadow:0 24px 60px #000a}
 .scard img{width:100%;aspect-ratio:5/6;object-fit:cover;display:block}
 .scard figcaption{padding:13px 15px 15px}
 .scard figcaption small{display:block;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--ac);margin-bottom:5px}
@@ -286,7 +286,10 @@ function stairsLayout(d){const N=photos.length,stepY=120;
 let sSmooth=-1,sLastD=-1;
 function stairsTick(){requestAnimationFrame(stairsTick);const r=stairsSec.getBoundingClientRect();
  if(r.bottom<0||r.top>innerHeight)return; /* stage off-screen — nothing to do */
- const N=photos.length,tgt=reduce?0:Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)))*(N-1);
+ /* Scroll-driven: the cards MUST follow the user's scroll even when the OS
+    reports reduced motion (Windows "Animation effects" off freezes them
+    otherwise — that was the desktop no-scroll bug). */
+ const N=photos.length,tgt=Math.min(1,Math.max(0,-r.top/Math.max(1,r.height-innerHeight)))*(N-1);
  if(sSmooth<0){sSmooth=tgt;stairsLayout(sSmooth);sLastD=sSmooth}
  else{sSmooth+=(tgt-sSmooth)*.3; /* responsive: cards track the wheel directly */
   if(Math.abs(sSmooth-sLastD)>.0004){stairsLayout(sSmooth);sLastD=sSmooth}}}
