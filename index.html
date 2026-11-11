@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Motion — Photographer Portfolio</title>
+<meta name="description" content="Selected photography work 2018–2026. Book a session on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--bg2:#0a0a0a;--tx:#f5f3ef;--mu:#858585;--ac:#d8d2c8;color-scheme:dark}
+:root[data-theme=light]{--bg:#f2f0ec;--bg2:#e8e5df;--tx:#111;--mu:#666;--ac:#333;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,sans-serif;overflow-x:hidden;transition:background .4s}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:calc(28px + env(safe-area-inset-top,0px)) 48px 0}
+nav .l{display:flex;gap:40px;align-items:center}.brand{font-weight:600;font-size:19px;letter-spacing:-.02em;color:var(--tx);text-decoration:none}
+nav a.n{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:.3s}nav a.n:hover{color:var(--tx)}
+.ib{width:44px;height:44px;border-radius:50%;border:0;background:#ffffff0d;color:var(--tx);cursor:pointer;font-size:15px}
+#hero{position:relative;height:100svh;min-height:620px;overflow:hidden;background:var(--bg)}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.copy{position:absolute;left:48px;bottom:9vh;z-index:5;max-width:640px;pointer-events:none}
+.copy>*{pointer-events:auto}
+.eb{display:flex;align-items:center;gap:16px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-weight:600}.eb:before{content:"";width:32px;height:1px;background:var(--mu)}
+h1{font:italic 400 clamp(52px,8vw,118px)/.94 'Playfair Display',serif;letter-spacing:-.03em;margin:26px 0 22px}
+.copy p{color:var(--mu);font-size:15px;line-height:1.7;max-width:460px;margin:0 0 34px}
+.btns{display:flex;align-items:center;gap:32px}
+.b1{background:var(--tx);color:var(--bg);padding:20px 40px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;text-decoration:none;transition:.3s}.b1:hover{opacity:.82}
+.b2{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);text-decoration:none}.b2:hover{color:var(--tx)}
+.rv{opacity:0;transform:translateY(24px);animation:rv 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes rv{to{opacity:1;transform:none}}
+.hint{position:absolute;right:48px;bottom:32px;z-index:5;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--mu)}
+section.s{padding:130px 48px;background:var(--bg2)}
+.s h2{font:italic 400 clamp(40px,6vw,80px)/1 'Playfair Display',serif;margin:18px 0 40px;letter-spacing:-.02em}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px}
+.chip{background:none;border:1px solid #ffffff22;color:var(--mu);padding:12px 22px;font:500 10px Inter;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:.3s}
+.chip.on,.chip:hover{color:var(--bg);background:var(--tx);border-color:var(--tx)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px}
+.grid figure{margin:0;cursor:pointer;transition:opacity .5s,transform .5s;overflow:hidden}
+.grid figure.off{display:none}
+.grid img{width:100%;aspect-ratio:5/7;object-fit:cover;display:block;transition:transform .8s,filter .5s;filter:brightness(.8)}
+.grid figure:hover img{transform:scale(1.05);filter:none}
+.grid figcaption{padding:14px 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);display:flex;justify-content:space-between}
+#contact{text-align:center;padding:160px 24px;background:var(--bg)}
+#contact h2{margin:20px auto 20px;max-width:900px}#contact p{color:var(--mu);margin:0 0 40px}
+#contact .links{margin-top:34px;display:flex;gap:30px;justify-content:center;flex-wrap:wrap;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+#contact .links a{color:var(--mu);text-decoration:none}#contact .links a:hover{color:var(--tx)}
+#lb{position:fixed;inset:0;z-index:50;background:#030303f5;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s}
+#lb.open{opacity:1;pointer-events:auto}
+#lb img{max-width:88vw;max-height:78vh;box-shadow:0 30px 120px #000;transform:scale(.9) translateY(20px);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+#lb.open img{transform:none}
+#lb .cap{position:absolute;bottom:34px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#aaa}
+#lb button{position:absolute;top:calc(28px + env(safe-area-inset-top,0px));right:32px;background:none;border:1px solid #fff5;color:#fff;padding:13px 20px;font:500 10px Inter;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+@media(max-width:760px){nav{padding:calc(20px + env(safe-area-inset-top,0px)) 20px 0}nav .l{gap:20px}.copy{left:20px;right:20px;bottom:6vh}.hint{display:none}.btns{gap:20px}.b1{padding:18px 26px}section.s{padding:90px 20px}h1{margin:18px 0 14px}}
+@media(prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+</style></head><body>
+<nav><div class="l"><a class="brand" href="#hero">Motion</a><a class="n" href="#archive">Gallery</a><a class="n" href="#contact">Pricing</a></div>
+<button class="ib" id="theme" aria-label="Toggle light / dark theme">☀</button></nav>
+
+<header id="hero"><canvas id="gl" aria-label="3D camera lens with a looping reel of photographs"></canvas>
+<div class="copy">
+<div class="eb rv" style="animation-delay:.5s">Selected work 2018 — 2026</div>
+<h1 class="rv" style="animation-delay:.7s">Every frame.<br>every story.</h1>
+<p class="rv" id="bio" style="animation-delay:.9s"></p>
+<div class="btns rv" style="animation-delay:1.1s"><a class="b1 wa" href="#" target="_blank" rel="noopener">Book a session</a><a class="b2" href="#archive">View archive</a></div></div>
+<div class="hint">Scroll or drag to explore</div></header>
+
+<section class="s" id="archive"><div class="eb">The archive</div><h2>Selected work</h2>
+<div class="chips" id="chips"></div><div class="grid" id="grid"></div></section>
+
+<section id="contact"><div class="eb" style="justify-content:center">Booking</div>
+<h2>Your story deserves<br>to be remembered.</h2><p>Let's create something unforgettable. Pricing is shared on request.</p>
+<a class="b1 wa" href="#" target="_blank" rel="noopener">Book your session</a>
+<div class="links"><a class="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a id="ig" href="#" target="_blank" rel="noopener">Instagram</a><span id="loc" style="color:var(--mu)"></span></div></section>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photograph viewer"><button id="x">Close ✕</button><img id="lbi" alt=""><div class="cap" id="lbc"></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ===== CONFIG — edit here only ===== */
+const CONFIG={
+  name:"Motion",
+  whatsapp:"",            // digits only incl. country code, e.g. "923001234567". Empty = WhatsApp opens with a contact picker.
+  instagram:"",           // full profile URL. Empty = link hidden.
+  location:"",            // e.g. "Lahore, Pakistan". Empty = hidden.
+  bio:"Editorial, portrait and event photography. Add the photographer's real bio here.",
+  message:"Hi, I'd like to book a photography session.",
+  // Replace with real photos: {src:"photos/01.jpg",title:"…",cat:"Weddings"}. Without src a placeholder frame is drawn.
+  photos:[
+    {title:"Frame 01",cat:"Portraits"},{title:"Frame 02",cat:"Weddings"},{title:"Frame 03",cat:"Editorial"},
+    {title:"Frame 04",cat:"Portraits"},{title:"Frame 05",cat:"Weddings"},{title:"Frame 06",cat:"Editorial"},
+    {title:"Frame 07",cat:"Portraits"},{title:"Frame 08",cat:"Weddings"}]
+};
+/* ===== UI wiring ===== */
+const $=s=>document.querySelector(s);
+document.title=CONFIG.name+" — Photographer Portfolio";$('.brand').textContent=CONFIG.name;$('#bio').textContent=CONFIG.bio;
+const waUrl=(m=CONFIG.message)=>`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(m)}`;
+document.querySelectorAll('.wa').forEach(a=>a.href=waUrl());
+CONFIG.instagram?$('#ig').href=CONFIG.instagram:$('#ig').remove();$('#loc').textContent=CONFIG.location;
+$('#theme').onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='light'?'':'light';$('#theme').textContent=r.dataset.theme==='light'?'☾':'☀';applyTheme()};
+/* placeholder frames */
+function mk(i,p){const c=document.createElement('canvas');c.width=500;c.height=700;const g=c.getContext('2d');
+ const h=(i*47+20)%360,gr=g.createLinearGradient(0,0,500,700);gr.addColorStop(0,`hsl(${h},18%,${22+i%3*6}%)`);gr.addColorStop(1,`hsl(${h+30},25%,7%)`);
+ g.fillStyle=gr;g.fillRect(0,0,500,700);g.strokeStyle='#ffffff30';g.strokeRect(24,24,452,652);
+ g.fillStyle='#ffffffaa';g.font='600 18px Inter,sans-serif';g.fillText(p.title.toUpperCase(),44,650);g.fillStyle='#ffffff66';g.font='13px Inter,sans-serif';g.fillText('PLACEHOLDER · ADD REAL PHOTO',44,60);return c}
+const photos=CONFIG.photos.map((p,i)=>({...p,canvas:p.src?null:mk(i,p),url:p.src||null}));
+photos.forEach(p=>{if(p.canvas)p.url=p.canvas.toDataURL('image/jpeg',.85)});
+/* archive */
+const cats=['All',...new Set(photos.map(p=>p.cat))];
+$('#chips').innerHTML=cats.map((c,i)=>`<button class="chip${i?'':' on'}" data-c="${c}">${c}</button>`).join('');
+$('#grid').innerHTML=photos.map((p,i)=>`<figure data-i="${i}" data-c="${p.cat}" tabindex="0"><img loading="lazy" src="${p.url}" alt="${p.title}"><figcaption><span>${p.title}</span><span>${p.cat}</span></figcaption></figure>`).join('');
+$('#chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));
+ document.querySelectorAll('#grid figure').forEach(f=>f.classList.toggle('off',b.dataset.c!=='All'&&f.dataset.c!==b.dataset.c))};
+const fl=e=>{const f=e.target.closest('figure');if(f&&(e.type==='click'||e.key==='Enter'))openLB(+f.dataset.i)};
+$('#grid').onclick=fl;$('#grid').onkeydown=fl;
+/* lightbox */
+let paused=false,lastFocus=null;
+function openLB(i){const p=photos[i];$('#lbi').src=p.url;$('#lbi').alt=p.title;$('#lbc').textContent=p.title+' · '+p.cat;$('#lb').classList.add('open');paused=true;lastFocus=document.activeElement;$('#x').focus()}
+function closeLB(){$('#lb').classList.remove('open');paused=false;lastFocus&&lastFocus.focus&&lastFocus.focus()}
+$('#x').onclick=closeLB;$('#lb').onclick=e=>{if(e.target.id==='lb')closeLB()};addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
+
+/* ===== THREE.JS SCENE ===== */
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const cv=$('#gl'),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:false});
+R.setPixelRatio(Math.min(devicePixelRatio,2));R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.1;
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(38,1,.1,100);
+const BG=new THREE.Color(0x050505);scene.background=BG;scene.fog=new THREE.Fog(0x050505,22,95);
+/* studio environment for reflections */
+(function(){const c=document.createElement('canvas');c.width=1024;c.height=512;const g=c.getContext('2d');g.fillStyle='#050505';g.fillRect(0,0,1024,512);
+ const box=(x,y,w,h,a)=>{g.fillStyle=`rgba(255,255,255,${a})`;g.fillRect(x,y,w,h)};
+ box(120,70,220,140,.9);box(620,40,300,60,.7);box(430,300,160,30,.35);box(820,200,60,200,.5);box(0,420,1024,92,.06);
+ const t=new THREE.CanvasTexture(c);t.mapping=THREE.EquirectangularReflectionMapping;t.encoding=THREE.sRGBEncoding;
+ const pm=new THREE.PMREMGenerator(R);scene.environment=pm.fromEquirectangular(t).texture;pm.dispose()})();
+scene.add(new THREE.AmbientLight(0xffffff,.15));const key=new THREE.DirectionalLight(0xfff2e0,1.2);key.position.set(-4,6,6);scene.add(key);
+/* perspective grid floor */
+const gv=[];for(let x=-60;x<=60;x+=1.5)gv.push(x,0,-90,x,0,12);for(let z=-90;z<=12;z+=1.5)gv.push(-60,0,z,60,0,z);
+const gg=new THREE.BufferGeometry();gg.setAttribute('position',new THREE.Float32BufferAttribute(gv,3));
+const grid=new THREE.LineSegments(gg,new THREE.LineBasicMaterial({color:0x5a5a5a,transparent:true,opacity:.7}));grid.position.y=-2.4;scene.add(grid);
+/* lens */
+const lens=new THREE.Group(),dark=(c,m,r)=>new THREE.MeshStandardMaterial({color:c,metalness:m,roughness:r});
+const cyl=(rt,rb,h,mat,z,seg=96)=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,seg),mat);m.rotation.x=Math.PI/2;m.position.z=z;lens.add(m);return m};
+const stripes=(()=>{const c=document.createElement('canvas');c.width=512;c.height=8;const g=c.getContext('2d');g.fillStyle='#111';g.fillRect(0,0,512,8);g.fillStyle='#000';for(let i=0;i<512;i+=8)g.fillRect(i,0,4,8);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6,1);return t})();
+const grip=dark(0x1a1a1a,.7,.5);grip.bumpMap=stripes;grip.bumpScale=3;grip.map=stripes;
+cyl(2,2,3.4,dark(0x0c0c0c,.85,.3),-1.2);          // main barrel
+cyl(2.12,2.12,1.2,grip,-1.9);                      // zoom grip
+cyl(2.1,2.1,.3,dark(0x050505,.9,.2),-.2);          // gap ring
+cyl(2.06,2.06,.18,new THREE.MeshStandardMaterial({color:0x7a1010,metalness:.6,roughness:.4}),-.55); // red accent
+cyl(2.15,2.15,.7,grip,.15);                        // focus ring
+cyl(2.22,2.22,.5,dark(0x080808,.95,.18),.75);      // front bezel
+const front=new THREE.Mesh(new THREE.RingGeometry(1.55,2.1,128),(()=>{const c=document.createElement('canvas');c.width=c.height=1024;const g=c.getContext('2d');g.fillStyle='#0b0b0c';g.fillRect(0,0,1024,1024);
+ g.translate(512,512);g.fillStyle='#e8e4dc';g.font='600 46px Inter,sans-serif';g.textAlign='center';
+ const arc=(s,a0,rad)=>{[...s].forEach((ch,i)=>{g.save();g.rotate(a0+i*.062);g.translate(0,-rad);g.fillText(ch,0,0);g.restore()})};
+ arc('MOTION   EF 24—105mm   1:4  L',-1.55,400);g.font='500 32px Inter';arc('Ø77mm',1.1,400);
+ const t=new THREE.CanvasTexture(c);t.anisotropy=8;t.encoding=THREE.sRGBEncoding;return new THREE.MeshStandardMaterial({map:t,metalness:.85,roughness:.35,envMapIntensity:.7})})());
+front.position.z=1.01;lens.add(front);
+const rim=new THREE.Mesh(new THREE.TorusGeometry(1.55,.07,24,128),dark(0x222222,1,.15));rim.position.z=1.02;lens.add(rim);
+const glassMat=new THREE.MeshPhysicalMaterial({color:0x07090c,metalness:1,roughness:.04,clearcoat:1,clearcoatRoughness:.02,envMapIntensity:1.4});
+const dome=new THREE.Mesh(new THREE.SphereGeometry(1.5,96,48,0,Math.PI*2,0,.62),glassMat);dome.rotation.x=Math.PI/2;dome.scale.set(1,1,.45);
+const dm=new THREE.Group();dm.add(dome);dm.position.z=.72;lens.add(dm);
+[1.15,.85,.55].forEach((r,i)=>{const t=new THREE.Mesh(new THREE.TorusGeometry(r,.012,12,96),new THREE.MeshStandardMaterial({color:i==1?0x5b4a7a:0x2a3a4a,metalness:1,roughness:.1,emissive:i==1?0x1a1030:0x0a1218}));t.position.z=.92+i*.01;lens.add(t)});
+const body=new THREE.Mesh(new THREE.BoxGeometry(5,3.4,2.2),dark(0x090909,.3,.7));body.position.set(1.6,-.2,-3.9);lens.add(body);
+scene.add(lens);
+/* reel */
+// Keep the reel dense and make its card count a multiple of the photo count,
+// so the image sequence wraps cleanly without a disorderly jump at either side.
+// Keep the hero reel to 20–40 cards, with complete photo-sequence cycles.
+const targetCards=innerWidth<760?24:32;
+const N=Math.max(photos.length,Math.ceil(targetCards/photos.length)*photos.length);let SP;
+/* wave path defined in screen space (x,y in px of a 1920x1440 reference) + distance from camera */
+// Smooth, continuous wave following the curved lane marked across the hero floor.
+// It rises near the left, flows down through the centre, then lifts toward the right.
+// Arc-length sampling keeps the cards evenly spaced along the whole curve.
+const WAVE=[
+  [-40,720,24],[130,645,20],[280,595,17],[450,590,14.5],
+  [620,605,12.5],[790,650,10.5],[950,705,9],[1120,740,8],
+  [1300,760,7.5],[1460,740,7.7],[1600,695,8.2],[1740,665,8.8],
+  [1850,620,9.4],[1940,500,10]
+];
+const SCREEN_STEPS=2048;
+let screenArcLut=new Float32Array(SCREEN_STEPS+1),screenPathLength=0;
+function buildPath(){
+  SP=new THREE.CatmullRomCurve3(WAVE.map(([x,y,d])=>{
+    const v=new THREE.Vector3(x/1920*2-1,1-y/1440*2,.5).unproject(cam);
+    return v.sub(cam.position).normalize().multiplyScalar(d).add(cam.position);
+  }),false,'centripetal');
+
+  // Measure the curve in screen pixels so perspective cannot open up gaps
+  // between cards on the far/right side of the hero.
+  const p=new THREE.Vector3();
+  let prevX=0,prevY=0,total=0;
+  for(let i=0;i<=SCREEN_STEPS;i++){
+    SP.getPoint(i/SCREEN_STEPS,p);
+    p.project(cam);
+    const x=(p.x*.5+.5)*cv.clientWidth;
+    const y=(-p.y*.5+.5)*cv.clientHeight;
+    if(i) total+=Math.hypot(x-prevX,y-prevY);
+    screenArcLut[i]=total;
+    prevX=x;prevY=y;
+  }
+  screenPathLength=total;
+}
+function screenUniformT(u){
+  const target=(u%1)*screenPathLength;
+  let lo=0,hi=SCREEN_STEPS;
+  while(hi-lo>1){
+    const mid=(lo+hi)>>1;
+    if(screenArcLut[mid]<target)lo=mid;else hi=mid;
+  }
+  const a=screenArcLut[lo],b=screenArcLut[hi];
+  const f=b>a?(target-a)/(b-a):0;
+  return (lo+f)/SCREEN_STEPS;
+}
+const loader=new THREE.TextureLoader(),texs=photos.map(p=>{const t=p.canvas?new THREE.CanvasTexture(p.canvas):loader.load(p.src);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;return t});
+const rr=document.createElement('canvas');rr.width=64;rr.height=90;(g=>{g.fillStyle='#000';g.fillRect(0,0,64,90);g.fillStyle='#fff';g.beginPath();const r=9;g.moveTo(r,0);g.arcTo(64,0,64,90,r);g.arcTo(64,90,0,90,r);g.arcTo(0,90,0,0,r);g.arcTo(0,0,64,0,r);g.fill()})(rr.getContext('2d'));
+const alpha=new THREE.CanvasTexture(rr);
+const blurs=photos.map(p=>{const c=document.createElement('canvas');c.width=20;c.height=28;const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;const d=s=>{c.getContext('2d').drawImage(s,0,0,20,28);t.needsUpdate=true};if(p.canvas)d(p.canvas);else{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>d(im);im.src=p.src}return t});
+const geo=new THREE.PlaneGeometry(.9,1.26),cards=[];
+for(let i=0;i<N;i++){const k=i%texs.length,mk2=(map,o)=>{const m=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({map,alphaMap:alpha,side:THREE.DoubleSide,transparent:true,fog:false,depthTest:false,depthWrite:false}));m.renderOrder=o;return m};
+ const m=mk2(texs[k],6),b=mk2(blurs[k],5);b.position.z=-.002;m.add(b);m.userData={i,e:0,pi:k};scene.add(m);cards.push(m)}
+// Continuous left-to-right loop: every card travels the full curved
+// path from the left end to the right end, then wraps straight back
+// to the left and repeats — forever, at a constant speed.
+const FLOW_DIRECTION=1;
+let off=0,speed=.045,hov=-1,sp=1,intro=0;const ray=new THREE.Raycaster(),ptr=new THREE.Vector2(9,9);
+const ss=(a,b,x)=>{x=Math.min(1,Math.max(0,(x-a)/(b-a)));return x*x*(3-2*x)};
+
+function layout(){const w=cv.clientWidth,h=cv.clientHeight,ar=w/h;R.setSize(w,h,false);cam.aspect=ar;
+ if(ar<.9){cam.position.set(0,1.6,13);cam.updateMatrixWorld();cam.lookAt(0,.8,0);lens.scale.setScalar(.6);lens.position.set(1.6,1.0,0);}
+ else if(ar<1.4){cam.position.set(0,1.2,9);cam.updateMatrixWorld();cam.lookAt(0,.2,0);lens.scale.setScalar(.72);lens.position.set(2.4,-.2,0);}
+ else{cam.position.set(0,1.2,8.2);cam.updateMatrixWorld();cam.lookAt(0,.24,0);lens.scale.setScalar(.7);lens.position.set(2.8,-.3,0);}
+ lens.rotation.y=-.62;lens.rotation.x=-.08;lens.userData.by=lens.position.y;cam.updateProjectionMatrix();cam.updateMatrixWorld();buildPath()}
+new ResizeObserver(layout).observe(cv);layout();
+function applyTheme(){/* canvas stays cinematic-dark in both themes; light mode only recolours the page */}
+cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();ptr.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1)});
+cv.addEventListener('pointerleave',()=>ptr.set(9,9));
+function pick(){ray.setFromCamera(ptr,cam);const h=ray.intersectObjects(cards.filter(c=>c.visible&&c.scale.x>.05),false)[0];return h?h.object.userData.i:-1}
+cv.addEventListener('click',e=>{const r=cv.getBoundingClientRect();ptr.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);const i=pick();if(i>=0)openLB(cards[i].userData.pi)});
+const tmp=new THREE.Vector3(),tan=new THREE.Vector3(),side=new THREE.Vector3(),to=new THREE.Vector3(),viewPos=new THREE.Vector3(),clock=new THREE.Clock();
+function frame(){requestAnimationFrame(frame);try{step()}catch(err){console.error(err)}}
+function step(){const dt=Math.min(clock.getDelta(),.05);intro=Math.min(1,intro+dt/(reduce?.01:2.2));
+ // Never slow on hover and never stop in normal view — motion is
+ // continuous. It only pauses while the lightbox is open (hero is
+ // covered then) and resumes from the exact same position on close.
+ const target=paused?0:1;sp+=(target-sp)*Math.min(1,dt*4);off=(off+FLOW_DIRECTION*speed*dt*sp+1)%1;
+ hov=ptr.x>5||paused?-1:pick();
+ cards.forEach((c,i)=>{const d=Math.min((i-hov+N)%N,(hov-i+N)%N),te=hov<0?0:d===0?1:d===1?.45:d===2?.12:0;c.userData.e+=(te-c.userData.e)*Math.min(1,dt*7);const e=c.userData.e;
+  // t increases along the path from left to right; modulo 1 creates the loop.
+  const t=(i/N+off)%1,pathT=screenUniformT(t);
+  SP.getPoint(pathT,tmp);SP.getTangent(pathT,tan);
+  // Keep cards fully visible at both ends so the rightmost card can
+  // wrap to the left edge and the next cards continue the same flow.
+  const life=ss(0,.5,intro*1.4-pathT*.6+.0);
+  side.set(-tan.z,0,tan.x).normalize();to.copy(cam.position).sub(tmp).normalize();
+  c.position.copy(tmp);c.position.y+=Math.sin(t*14+performance.now()*.0004)*.04;c.position.addScaledVector(to,.9*e);
+  c.lookAt(cam.position);
+  const yaw=(pathT-.5)*.9,roll=(pathT-.5)*.16;
+  c.rotateY(yaw);c.rotateZ(roll);
+  viewPos.copy(tmp).applyMatrix4(cam.matrixWorldInverse);
+  const depth=Math.max(.1,-viewPos.z);
+  const targetWidthPx=(screenPathLength/N)*2.04;
+  const pixelsPerWorldUnit=cv.clientHeight/(2*depth*Math.tan(THREE.MathUtils.degToRad(cam.fov/2)));
+  const projectedWidthFactor=Math.max(.72,Math.abs(Math.cos(yaw)*Math.cos(roll)));
+  const fitScale=targetWidthPx/(geo.parameters.width*pixelsPerWorldUnit*projectedWidthFactor);
+  // Symmetric edge treatment: the outer four cards on each end are
+  // only slightly smaller, then grow smoothly to the normal card size.
+  const edgeDistance=Math.min(t,1-t);
+  const edgeSize=THREE.MathUtils.lerp(.65,1,ss(0,4/N,edgeDistance));
+  const s=life*fitScale*(1+.12*e)*edgeSize;
+  c.scale.setScalar(Math.max(.0001,s));c.visible=life>.01;
+  // Seamless loop: no centre-only fade. Cards stay fully visible for
+  // the whole left-to-right journey, so the wrap at the right edge
+  // back to the left has no fade-out / fade-in jump.
+  const b=Math.min(1,.75+.25*e);c.material.color.setScalar(b);c.children[0].material.color.setScalar(b*.9);c.material.opacity=life;});
+ grid.position.z=(performance.now()*.0003*(reduce?0:1))%1;
+ lens.position.y=(lens.userData.by??lens.position.y)+Math.sin(performance.now()*.0007)*.04;
+ const k=ss(0,1,intro);lens.visible=k>0;lens.scale.multiplyScalar(1);R.toneMappingExposure=.2+.9*k;
+ R.render(scene,cam)}
+frame();
+</script></body></html>
