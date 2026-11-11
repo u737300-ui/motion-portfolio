@@ -315,10 +315,13 @@ function step(){const dt=Math.min(clock.getDelta(),.05);intro=Math.min(1,intro+d
   const pixelsPerWorldUnit=cv.clientHeight/(2*depth*Math.tan(THREE.MathUtils.degToRad(cam.fov/2)));
   const projectedWidthFactor=Math.max(.72,Math.abs(Math.cos(yaw)*Math.cos(roll)));
   const fitScale=targetWidthPx/(geo.parameters.width*pixelsPerWorldUnit*projectedWidthFactor);
-  // Symmetric edge treatment: the outer four cards on each end are
-  // only slightly smaller, then grow smoothly to the normal card size.
-  const edgeDistance=Math.min(t,1-t);
-  const edgeSize=THREE.MathUtils.lerp(.65,1,ss(0,4/N,edgeDistance));
+  // Hero edge sizing only: at each edge the cards start small, then
+  // grow step by step — small -> larger -> more large -> normal size.
+  // Only the outer 3 cards on each end are affected; every other
+  // card stays at normal size.
+  const edgeCards=Math.min(t,1-t)*N,edgeStops=[.52,.72,.9,1];
+  const edgeIdx=Math.min(2,Math.floor(edgeCards)),edgeFrac=edgeCards-edgeIdx;
+  const edgeSize=edgeCards>=3?1:THREE.MathUtils.lerp(edgeStops[edgeIdx],edgeStops[edgeIdx+1],edgeFrac*edgeFrac*(3-2*edgeFrac));
   const s=life*fitScale*(1+.12*e)*edgeSize;
   c.scale.setScalar(Math.max(.0001,s));c.visible=life>.01;
   // Seamless loop: no centre-only fade. Cards stay fully visible for
