@@ -4,7 +4,9 @@ Single-file cinematic photographer portfolio with a 3D camera lens hero and a ph
 
 - Cards travel the full curved path from the left edge to the right edge at a constant speed, then wrap straight back to the left — no fade-out at the edges, no slowdown on hover, seamless repeat.
 - The loop only pauses while a photo lightbox is open, and resumes from the exact same position on close.
-- Archive gallery with category filters, light / dark theme toggle, booking / contact section.
+- Archive gallery with category filters, light / dark theme toggle.
+- Pricing section — Weddings / Portraits / Events / Editorial, "Price on request" (no invented prices), each with a Book button that scrolls to the booking form and pre-selects that service.
+- Booking form — service, date picker, time slot, name, WhatsApp number, city/venue, details — whose submit opens WhatsApp with the whole booking pre-written (set the photographer's number in `CONFIG.whatsapp`).
 
 ## Preview on GitHub Pages
 
