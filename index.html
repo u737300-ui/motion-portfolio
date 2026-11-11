@@ -67,6 +67,14 @@ section.s{padding:130px 48px;background:var(--bg2)}
 #contact h2{margin:20px auto 20px;max-width:900px}#contact p{color:var(--mu);margin:0 0 40px}
 #contact .links{margin-top:34px;display:flex;gap:30px;justify-content:center;flex-wrap:wrap;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
 #contact .links a{color:var(--mu);text-decoration:none}#contact .links a:hover{color:var(--tx)}
+.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1020px;margin:54px auto 0;text-align:left}
+.social-card{border:1px solid #ffffff22;padding:36px 30px;background:var(--bg2);display:flex;flex-direction:column;gap:12px;text-decoration:none;color:var(--tx);transition:.35s}
+.social-card:hover{border-color:var(--ac);transform:translateY(-4px)}
+.social-card .ic{font-size:24px;color:var(--ac)}
+.social-card h3{font:italic 500 26px 'Playfair Display',serif;margin:0}
+.social-card p{color:var(--mu);font-size:13px;margin:0;flex:1;word-break:break-word}
+.social-card span{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--ac)}
+@media(max-width:900px){.social-grid{grid-template-columns:1fr}}
 /* spiral stairs showcase — pole in the middle, cards on a circular stair */
 #stairs{position:relative;height:580vh;background:var(--bg)}
 .stage{position:sticky;top:0;height:100svh;overflow:hidden}
@@ -166,10 +174,13 @@ section.s{padding:130px 48px;background:var(--bg2)}
 </form>
 </div></section>
 
-<section id="contact"><div class="eb" style="justify-content:center">Booking</div>
-<h2>Your story deserves<br>to be remembered.</h2><p>Let's create something unforgettable. Pricing is shared on request.</p>
-<a class="b1" href="#book">Book your session</a>
-<div class="links"><a class="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a id="ig" href="#" target="_blank" rel="noopener">Instagram</a><span id="loc" style="color:var(--mu)"></span></div></section>
+<section id="contact"><div class="eb" style="justify-content:center">Contact</div>
+<h2>Talk to Jam Studio.</h2><p>Follow the work or reach out for bookings — Rahim Yar Khan &amp; Sadiqabad.</p>
+<div class="social-grid">
+<a class="social-card" id="igCard" href="#" target="_blank" rel="noopener"><div class="ic">◎</div><h3>Instagram</h3><p>@jam_studio_official.pk</p><span>View profile ↗</span></a>
+<a class="social-card" id="fbCard" href="#" target="_blank" rel="noopener"><div class="ic">f</div><h3>Facebook</h3><p>Jam Studio photography</p><span>View page ↗</span></a>
+<a class="social-card" id="mailCard" href="#"><div class="ic">✉</div><h3>Email</h3><p id="mailVal"></p><span>Write to us ↗</span></a>
+</div></section>
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Photograph viewer"><button id="x">Close ✕</button><img id="lbi" alt=""><div class="cap" id="lbc"></div></div>
 
@@ -179,7 +190,9 @@ section.s{padding:130px 48px;background:var(--bg2)}
 const CONFIG={
   name:"Motion",
   whatsapp:"",            // digits only incl. country code, e.g. "923001234567". Empty = WhatsApp opens with a contact picker.
-  instagram:"",           // full profile URL. Empty = link hidden.
+  instagram:"https://www.instagram.com/jam_studio_official.pk/", // client profile. Empty = card hidden.
+  facebook:"https://facebook.com/jamstudiosdkofficial",          // client page (from their own posts). Empty = card hidden.
+  email:"",               // client's public email. None is listed on their profiles — fill in when known; empty = card hidden.
   location:"",            // e.g. "Lahore, Pakistan". Empty = hidden.
   bio:"Editorial, portrait and event photography. Add the photographer's real bio here.",
   message:"Hi, I'd like to book a photography session.",
@@ -222,7 +235,10 @@ $('#bookForm').addEventListener('submit',e=>{e.preventDefault();const v=id=>docu
  if(v('fCity'))lines.push(`• City / Venue: ${v('fCity')}`);if(v('fDetails'))lines.push(`• Details: ${v('fDetails')}`);
  lines.push('','Please share your availability and a quote. Thank you!');
  window.open(waUrl(lines.join('\n')),'_blank')});
-CONFIG.instagram?$('#ig').href=CONFIG.instagram:$('#ig').remove();$('#loc').textContent=CONFIG.location;
+/* contact cards — a card shows only when its CONFIG detail exists */
+CONFIG.instagram?$('#igCard').href=CONFIG.instagram:$('#igCard').remove();
+CONFIG.facebook?$('#fbCard').href=CONFIG.facebook:$('#fbCard').remove();
+if(CONFIG.email){$('#mailCard').href='mailto:'+CONFIG.email;$('#mailVal').textContent=CONFIG.email}else{$('#mailCard').remove()}
 $('#theme').onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='light'?'':'light';$('#theme').textContent=r.dataset.theme==='light'?'☾':'☀';applyTheme()};
 /* placeholder frames */
 function mk(i,p){const c=document.createElement('canvas');c.width=500;c.height=700;const g=c.getContext('2d');
