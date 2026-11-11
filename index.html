@@ -131,11 +131,21 @@ const CONFIG={
   location:"",            // e.g. "Lahore, Pakistan". Empty = hidden.
   bio:"Editorial, portrait and event photography. Add the photographer's real bio here.",
   message:"Hi, I'd like to book a photography session.",
-  // Replace with real photos: {src:"photos/01.jpg",title:"…",cat:"Weddings"}. Without src a placeholder frame is drawn.
+  // Real photos from Pexels (free to use — credits in PHOTO-CREDITS.md).
+  // Pakistani weddings & portraits first. Without src a placeholder frame is drawn.
   photos:[
-    {title:"Frame 01",cat:"Portraits"},{title:"Frame 02",cat:"Weddings"},{title:"Frame 03",cat:"Editorial"},
-    {title:"Frame 04",cat:"Portraits"},{title:"Frame 05",cat:"Weddings"},{title:"Frame 06",cat:"Editorial"},
-    {title:"Frame 07",cat:"Portraits"},{title:"Frame 08",cat:"Weddings"}]
+    {src:"https://images.pexels.com/photos/17542154/pexels-photo-17542154.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Bride & Groom — First Dance",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/8692770/pexels-photo-8692770.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Kurta Portrait — Kasur",cat:"Portraits"},
+    {src:"https://images.pexels.com/photos/19464097/pexels-photo-19464097.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Mehndi — Peshawar",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/24399484/pexels-photo-24399484.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Black & White — Islamabad",cat:"Editorial"},
+    {src:"https://images.pexels.com/photos/30548340/pexels-photo-30548340.jpeg?auto=compress&cs=tinysrgb&w=800",title:"A Walk Together",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/4556737/pexels-photo-4556737.jpeg?auto=compress&cs=tinysrgb&w=800",title:"The Elder — Lahore",cat:"Portraits"},
+    {src:"https://images.pexels.com/photos/13045307/pexels-photo-13045307.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Garden Ceremony",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/8596868/pexels-photo-8596868.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Traditional Kurta — Punjab",cat:"Portraits"},
+    {src:"https://images.pexels.com/photos/29169315/pexels-photo-29169315.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Henna & Gold",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/20266364/pexels-photo-20266364.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Night Coat — Islamabad",cat:"Editorial"},
+    {src:"https://images.pexels.com/photos/16788096/pexels-photo-16788096.jpeg?auto=compress&cs=tinysrgb&w=800",title:"By the Window",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/9061688/pexels-photo-9061688.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Park Bench — Lahore",cat:"Portraits"}]
 };
 /* ===== UI wiring ===== */
 const $=s=>document.querySelector(s);
