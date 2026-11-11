@@ -68,7 +68,7 @@ section.s{padding:130px 48px;background:var(--bg2)}
 #contact .links{margin-top:34px;display:flex;gap:30px;justify-content:center;flex-wrap:wrap;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
 #contact .links a{color:var(--mu);text-decoration:none}#contact .links a:hover{color:var(--tx)}
 /* spiral stairs showcase — pole in the middle, cards on a circular stair */
-#stairs{position:relative;height:460vh;background:var(--bg)}
+#stairs{position:relative;height:580vh;background:var(--bg)}
 .stage{position:sticky;top:0;height:100svh;overflow:hidden}
 .slabel{position:absolute;top:104px;left:48px;z-index:80;pointer-events:none}
 .slabel p{color:var(--mu);font-size:13px;margin:10px 0 0}
@@ -77,7 +77,7 @@ section.s{padding:130px 48px;background:var(--bg2)}
 .pole span{writing-mode:vertical-rl;font:600 21px Inter,sans-serif;letter-spacing:.55em;color:var(--ac);text-transform:uppercase;text-shadow:0 2px 12px #000;white-space:nowrap}
 .pole:before,.pole:after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e8e0cc,#6b5f45 60%,#221d13)}
 .pole:before{top:-13px}.pole:after{bottom:-13px}
-.scard{position:absolute;left:50%;top:50%;width:252px;background:var(--bg2);border:1px solid #ffffff26;box-shadow:0 24px 60px #000a;will-change:transform,opacity}
+.scard{position:absolute;left:50%;top:50%;width:230px;background:var(--bg2);border:1px solid #ffffff26;box-shadow:0 24px 60px #000a;will-change:transform,opacity}
 .scard img{width:100%;aspect-ratio:5/6;object-fit:cover;display:block}
 .scard figcaption{padding:13px 15px 15px}
 .scard figcaption small{display:block;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--ac);margin-bottom:5px}
@@ -119,14 +119,14 @@ section.s{padding:130px 48px;background:var(--bg2)}
 <div class="hint">Scroll or drag to explore</div></header>
 
 <section id="stairs"><div class="stage" id="stage">
-<div class="slabel"><div class="eb">Selected work</div><p>Twelve frames on a spiral stair — keep scrolling down.</p></div>
+<div class="slabel"><div class="eb">Selected work</div><p>Twenty-two frames on a spiral stair — keep scrolling down.</p></div>
 <div class="pole" aria-hidden="true"><span>Jam Studio</span></div>
 <div id="scards"></div>
 <div class="shint">Scroll — walk down the stairs</div>
 </div></section>
 
 <section id="enter"><div class="eb" style="justify-content:center">The Gallery</div>
-<p class="sub">Behind this door are all twelve photographs, full size.</p>
+<p class="sub">Behind this door are all twenty-two photographs, full size.</p>
 <div class="plate">Gallery</div>
 <div class="doorwrap" id="doorwrap"><div class="glow"></div><button class="door" id="door" aria-label="Open the gallery door"><i class="dp t"></i><i class="dp b"></i><i class="knob"></i></button></div>
 <p class="form-note" style="margin-top:28px">Click the door to open the full gallery. Until then, it stays closed.</p></section>
@@ -189,7 +189,17 @@ const CONFIG={
     {src:"https://images.pexels.com/photos/29169315/pexels-photo-29169315.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Henna & Gold",desc:"Henna, gold and bridal detail, up close.",cat:"Weddings"},
     {src:"https://images.pexels.com/photos/20266364/pexels-photo-20266364.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Night Coat — Islamabad",desc:"An editorial frame by firelight, Islamabad.",cat:"Editorial"},
     {src:"https://images.pexels.com/photos/16788096/pexels-photo-16788096.jpeg?auto=compress&cs=tinysrgb&w=800",title:"By the Window",desc:"A window-light moment on the wedding day.",cat:"Weddings"},
-    {src:"https://images.pexels.com/photos/9061688/pexels-photo-9061688.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Park Bench — Lahore",desc:"Shalwar kameez and a slow afternoon, Lahore.",cat:"Portraits"}]
+    {src:"https://images.pexels.com/photos/9061688/pexels-photo-9061688.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Park Bench — Lahore",desc:"Shalwar kameez and a slow afternoon, Lahore.",cat:"Portraits"},
+    {src:"https://images.pexels.com/photos/34000752/pexels-photo-34000752.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Under the Tree",desc:"A wedding portrait in the shade of a tree.",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/8621669/pexels-photo-8621669.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Sunglasses — Lahore",desc:"Brown kurta and sunglasses, Lahore style.",cat:"Portraits"},
+    {src:"https://images.pexels.com/photos/30439688/pexels-photo-30439688.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Calla Lilies",desc:"Henna, a ring, and white calla lilies.",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/10979296/pexels-photo-10979296.jpeg?auto=compress&cs=tinysrgb&w=800",title:"The Guard — Lahore",desc:"In uniform at a Lahore heritage site.",cat:"Portraits"},
+    {src:"https://images.pexels.com/photos/34018688/pexels-photo-34018688.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Black & White Vows",desc:"Newlyweds in black and white, the ring in focus.",cat:"Editorial"},
+    {src:"https://images.pexels.com/photos/9299507/pexels-photo-9299507.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Karakul Hat — Lahore",desc:"A karakul hat and traditional dress, Lahore.",cat:"Portraits"},
+    {src:"https://images.pexels.com/photos/33552292/pexels-photo-33552292.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Mehndi on Lace",desc:"Bridal mehndi over lace, every line by hand.",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/8692585/pexels-photo-8692585.jpeg?auto=compress&cs=tinysrgb&w=800",title:"The Photographer — Kasur",desc:"The man behind the camera, Kasur.",cat:"Editorial"},
+    {src:"https://images.pexels.com/photos/33024112/pexels-photo-33024112.jpeg?auto=compress&cs=tinysrgb&w=800",title:"Bridal Detail",desc:"Mehndi and bridal finery, up close.",cat:"Weddings"},
+    {src:"https://images.pexels.com/photos/38369416/pexels-photo-38369416.jpeg?auto=compress&cs=tinysrgb&w=800",title:"The Celebration",desc:"Family and friends, celebrating together.",cat:"Events"}]
 };
 /* ===== UI wiring ===== */
 const $=s=>document.querySelector(s);
@@ -232,7 +242,7 @@ const stairsSec=$('#stairs'),stageEl=$('#stage'),scardsEl=$('#scards');
 scardsEl.innerHTML=photos.map((p,i)=>`<figure class="scard" data-i="${i}"><img src="${p.url}" alt="${p.title}"><figcaption><small>${p.cat}</small><b>${p.title}</b><p>${p.desc||''}</p></figcaption></figure>`).join('');
 const scardEls=[...scardsEl.children];
 scardsEl.addEventListener('click',e=>{const f=e.target.closest('.scard');if(f&&f._front)openLB(+f.dataset.i)});
-function stairsLayout(p){const N=photos.length,W=stageEl.clientWidth,radiusX=Math.min(W*.37,540),stepA=.72,stepY=52;
+function stairsLayout(p){const N=photos.length,W=stageEl.clientWidth,radiusX=Math.min(W*.37,540),stepA=.5,stepY=30;
  scardEls.forEach((el,i)=>{const a=i*stepA-p*stepA*(N-1),y=(i-(N-1)/2)*stepY,cs=Math.cos(a);
   const x=Math.sin(a)*radiusX,sc=.8+.26*Math.max(0,cs),op=.22+.78*Math.max(0,(cs+.35)/1.35);
   el.style.transform=`translate(-50%,-50%) translate(${x.toFixed(1)}px,${y.toFixed(1)}px) scale(${sc.toFixed(3)})`;
