@@ -100,8 +100,11 @@ section.s{padding:130px 48px;background:var(--bg2)}
 .door .dp{position:absolute;left:26px;right:26px;border:1px solid #d8d2c833;background:#00000033}
 .door .dp.t{top:30px;height:128px}.door .dp.b{bottom:30px;height:148px}
 .door .knob{position:absolute;right:20px;top:50%;width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f2e7c8,#8a764e 65%,#2c2417)}
-#gallery{display:none}
+#gallery{display:none;position:relative}
 #gallery.show{display:block}
+.gallery-close{position:absolute;top:34px;right:48px;background:none;border:1px solid #ffffff33;color:var(--tx);padding:13px 20px;font:500 10px Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:.3s;z-index:2}
+.gallery-close:hover{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+@media(max-width:760px){.gallery-close{top:24px;right:20px}}
 @media(max-width:760px){.scard{width:172px}.pole{width:74px}.pole span{font-size:15px}.slabel{left:20px;top:92px}}
 #lb{position:fixed;inset:0;z-index:200;background:#030303f5;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s}
 #lb.open{opacity:1;pointer-events:auto}
@@ -133,10 +136,10 @@ section.s{padding:130px 48px;background:var(--bg2)}
 <section id="enter"><div class="eb" style="justify-content:center">The Gallery</div>
 <p class="sub">Behind this door are all twenty-two photographs, full size.</p>
 <div class="plate">Gallery</div>
-<div class="doorwrap" id="doorwrap"><div class="glow"></div><button class="door" id="door" aria-label="Open the gallery door"><i class="dp t"></i><i class="dp b"></i><i class="knob"></i></button></div>
-<p class="form-note" style="margin-top:28px">Click the door to open the full gallery. Until then, it stays closed.</p></section>
+<div class="doorwrap" id="doorwrap"><div class="glow"></div><button class="door" id="door" aria-label="Open the gallery door" aria-expanded="false" aria-controls="gallery"><i class="dp t"></i><i class="dp b"></i><i class="knob"></i></button></div>
+<p class="form-note" id="doorNote" style="margin-top:28px">Click the door to open the full gallery. Until then, it stays closed.</p></section>
 
-<section class="s" id="gallery"><div class="eb">The archive</div><h2>Selected work</h2>
+<section class="s" id="gallery"><button class="gallery-close" id="galleryClose" type="button">Close gallery ✕</button><div class="eb">The archive</div><h2>Selected work</h2>
 <div class="chips" id="chips"></div><div class="grid" id="grid"></div></section>
 
 <section class="s" id="pricing" style="background:var(--bg)">
@@ -272,10 +275,18 @@ function stairsTick(){requestAnimationFrame(stairsTick);const r=stairsSec.getBou
  const tgt=(reduce||performance.now()-sLastMove>130)?Math.round(sPos):sPos; /* pause -> snap to the nearest card */
  if(sSmooth<0)sSmooth=tgt; sSmooth+=(tgt-sSmooth)*.12; stairsLayout(sSmooth)}
 requestAnimationFrame(stairsTick);
-/* ===== THE DOOR — the full gallery stays hidden until it is opened ===== */
-let doorOpen=false;
-$('#door').addEventListener('click',()=>{if(doorOpen)return;doorOpen=true;$('#doorwrap').classList.add('open');
- setTimeout(()=>{const g=$('#gallery');g.classList.add('show');g.scrollIntoView({behavior:reduce?'auto':'smooth'})},780)});
+/* ===== THE DOOR — gallery opens with the door, closes with the door ===== */
+let doorOpen=false,doorTimer=null;
+const doorBtn=$('#door'),doorWrap=$('#doorwrap'),galleryEl=$('#gallery'),doorNote=$('#doorNote');
+function setDoorNote(){if(doorNote)doorNote.textContent=doorOpen?'The gallery is open below. Close the gallery and this door will close again.':'Click the door to open the full gallery. Until then, it stays closed.'}
+function openGallery(){if(doorOpen)return;doorOpen=true;doorWrap.classList.add('open');doorBtn.setAttribute('aria-expanded','true');doorBtn.setAttribute('aria-label','Close the gallery door');setDoorNote();
+ doorTimer=setTimeout(()=>{galleryEl.classList.add('show');galleryEl.scrollIntoView({behavior:reduce?'auto':'smooth'})},780)}
+function closeGallery(scrollBack=true){if(!doorOpen&&!galleryEl.classList.contains('show'))return;doorOpen=false;
+ if(doorTimer){clearTimeout(doorTimer);doorTimer=null}
+ galleryEl.classList.remove('show');doorWrap.classList.remove('open');doorBtn.setAttribute('aria-expanded','false');doorBtn.setAttribute('aria-label','Open the gallery door');setDoorNote();
+ if(scrollBack)$('#enter').scrollIntoView({behavior:reduce?'auto':'smooth'})}
+doorBtn.addEventListener('click',()=>doorOpen?closeGallery(false):openGallery());
+$('#galleryClose').addEventListener('click',()=>closeGallery(true));
 
 /* ===== THREE.JS SCENE ===== */
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
