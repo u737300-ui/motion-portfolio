@@ -38,21 +38,31 @@ section.s{padding:130px 48px;background:var(--bg2)}
 .grid img{width:100%;aspect-ratio:5/7;object-fit:cover;display:block;transition:transform .8s,filter .5s;filter:brightness(.8)}
 .grid figure:hover img{transform:scale(1.05);filter:none}
 .grid figcaption{padding:14px 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);display:flex;justify-content:space-between}
-.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
-.price{border:1px solid #ffffff22;padding:38px 32px;display:flex;flex-direction:column;gap:14px;background:var(--bg2)}
-.price h3{font:italic 500 28px 'Playfair Display',serif;margin:0}
-.price p{color:var(--mu);font-size:14px;line-height:1.7;margin:0;flex:1}
-.price .amt{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--ac)}
-.price .b1{text-align:center}
-#book{background:var(--bg2)}
-.bform{max-width:780px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.bform label{display:flex;flex-direction:column;gap:9px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mu)}
-.bform input,.bform select,.bform textarea{background:var(--bg);border:1px solid #ffffff22;color:var(--tx);padding:16px;font:400 14px Inter,sans-serif;text-transform:none;letter-spacing:0;width:100%}
-.bform textarea{resize:vertical}
-.bform .full{grid-column:1/-1}
-.bform button.b1{border:0;cursor:pointer;justify-self:start}
-.fnote{color:var(--mu);font-size:13px;line-height:1.7;max-width:560px;margin:22px 0 0}
-@media(max-width:760px){.bform{grid-template-columns:1fr}}
+/* pricing + booking — same layout as the Jam Studio live site */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:54px;flex-wrap:wrap}
+.sec-head h2{margin:18px 0 0}
+.sec-head p{color:var(--mu);font-size:13px;line-height:1.8;max-width:300px;margin:0}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price-card{border:1px solid #ffffff22;padding:44px 34px;background:var(--bg);display:flex;flex-direction:column;gap:16px;transition:.35s}
+.price-card:hover{border-color:var(--ac);transform:translateY(-4px)}
+.price-card .ic{font-size:26px}
+.price-card h3{font:italic 500 30px 'Playfair Display',serif;margin:0}
+.price-card p{color:var(--mu);font-size:13px;line-height:1.85;margin:0;flex:1}
+.price-card .from{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ac)}
+.price-card .b1{text-align:center}
+.book-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:6vw;align-items:start}
+.book-copy h2{font:italic 500 clamp(38px,4.4vw,60px)/1.08 'Playfair Display',serif;margin:16px 0 20px}
+.book-copy p{color:var(--mu);font-size:13.5px;line-height:1.9;max-width:420px;margin:0}
+.steps{margin-top:34px;display:grid;gap:14px}
+.steps div{display:flex;gap:16px;align-items:baseline;color:var(--tx);font-size:13px}
+.steps b{color:var(--ac);font:italic 500 19px 'Playfair Display',serif}
+#bookForm{display:grid;gap:14px}
+#bookForm label{font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--mu);display:grid;gap:8px}
+#bookForm input,#bookForm select,#bookForm textarea{background:var(--bg);border:1px solid #ffffff22;color:var(--tx);padding:15px 16px;font:400 14px Inter,sans-serif;width:100%}
+#bookForm button.b1{border:0;cursor:pointer}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-note{font-size:11px;color:var(--mu);line-height:1.7;margin:0}
+@media(max-width:900px){.price-grid,.book-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
 #contact{text-align:center;padding:160px 24px;background:var(--bg)}
 #contact h2{margin:20px auto 20px;max-width:900px}#contact p{color:var(--mu);margin:0 0 40px}
 #contact .links{margin-top:34px;display:flex;gap:30px;justify-content:center;flex-wrap:wrap;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
@@ -80,27 +90,29 @@ section.s{padding:130px 48px;background:var(--bg2)}
 <section class="s" id="archive"><div class="eb">The archive</div><h2>Selected work</h2>
 <div class="chips" id="chips"></div><div class="grid" id="grid"></div></section>
 
-<section class="s" id="pricing" style="background:var(--bg)"><div class="eb">Pricing</div><h2>Simple, honest<br>booking.</h2>
-<div class="prices">
-<div class="price"><h3>Weddings</h3><p>Full-day wedding coverage — ceremony, portraits and reception, edited into a story you'll keep forever.</p><div class="amt">Price on request</div><a class="b1 book-btn" href="#book" data-service="Weddings">Book weddings</a></div>
-<div class="price"><h3>Portraits</h3><p>Individual, family and couple portrait sessions, on location or in studio light.</p><div class="amt">Price on request</div><a class="b1 book-btn" href="#book" data-service="Portraits">Book portraits</a></div>
-<div class="price"><h3>Events</h3><p>Birthdays, corporate events, shows and celebrations — candid coverage as it happens.</p><div class="amt">Price on request</div><a class="b1 book-btn" href="#book" data-service="Events">Book events</a></div>
-<div class="price"><h3>Editorial</h3><p>Brand, fashion and publication shoots, planned frame by frame with you.</p><div class="amt">Price on request</div><a class="b1 book-btn" href="#book" data-service="Editorial">Book editorial</a></div>
-</div>
-<p class="fnote">Every occasion is different, so pricing is quoted per story, not per template. Pick a service, send the booking form, and you'll get an exact quote on WhatsApp.</p></section>
+<section class="s" id="pricing" style="background:var(--bg)">
+<div class="sec-head"><div><div class="eb">Pricing</div><h2>Simple, honest<br>booking.</h2></div>
+<p>Every celebration is different, so pricing is per story, not per template. Tell us your date — you'll get an exact quote on WhatsApp.</p></div>
+<div class="price-grid">
+<div class="price-card"><div class="ic">💍</div><h3>Weddings</h3><p>Full-day wedding coverage — ceremony, portraits and every in-between moment. Cinematic portraits, family formals and a story that still feels alive in twenty years.</p><div class="from">Request a Quote</div><a class="b1 book-btn" href="#book" data-service="Wedding Photography">Book on WhatsApp</a></div>
+<div class="price-card"><div class="ic">◉</div><h3>Portraits</h3><p>Studio and outdoor portrait sessions — individuals, couples and families. Directed when you need it, invisible when you don't.</p><div class="from">Request a Quote</div><a class="b1 book-btn" href="#book" data-service="Portrait Session">Book on WhatsApp</a></div>
+<div class="price-card"><div class="ic">✦</div><h3>Events &amp; Editorial</h3><p>Birthdays, engagements, corporate events and editorial shoots — candid coverage as it happens, planned frame by frame with you.</p><div class="from">Request a Quote</div><a class="b1 book-btn" href="#book" data-service="Event / Editorial Shoot">Book on WhatsApp</a></div>
+</div></section>
 
-<section class="s" id="book"><div class="eb">Booking</div><h2>Book a session</h2>
-<form class="bform" id="bookForm">
-<label>Service<select id="fService"><option>Weddings</option><option>Portraits</option><option>Events</option><option>Editorial</option><option>Other</option></select></label>
-<label>Preferred date<input type="date" id="fDate" required></label>
-<label>Time slot<select id="fTime"><option>Morning — 9:00 AM</option><option>Midday — 12:00 PM</option><option>Afternoon — 3:00 PM</option><option>Evening — 6:00 PM</option><option>Night — 8:00 PM</option><option>Flexible</option></select></label>
-<label>Your name<input type="text" id="fName" placeholder="Your full name" required></label>
-<label>Your WhatsApp number<input type="tel" id="fPhone" placeholder="03xx xxxxxxx" required></label>
-<label>City / venue<input type="text" id="fCity" placeholder="Where is the shoot?"></label>
-<label class="full">Booking details (optional)<textarea id="fDetails" rows="3" placeholder="Event type, guests, locations, anything you dream of…"></textarea></label>
-<button class="b1 full" type="submit" style="justify-self:start">Send booking on WhatsApp →</button>
+<section class="s" id="book" style="background:var(--bg2)">
+<div class="book-grid">
+<div class="book-copy"><div class="eb">Book a Session</div><h2>Your date,<br>held in light.</h2>
+<p>Fill this in and it opens WhatsApp with everything already written — no forms lost in inboxes, no waiting on email. You'll get a reply with availability and your exact quote.</p>
+<div class="steps"><div><b>01</b> Choose your service &amp; date</div><div><b>02</b> Add your name &amp; number</div><div><b>03</b> Send on WhatsApp — done</div></div></div>
+<form id="bookForm">
+<label>Photography Service<select id="fService" required><option>Wedding Photography</option><option>Portrait Session</option><option>Event / Editorial Shoot</option><option>Family Session</option><option>Other — tell us below</option></select></label>
+<div class="frow"><label>Preferred Date<input type="date" id="fDate" required></label><label>Your Name<input type="text" id="fName" placeholder="e.g. Ayesha Khan" required></label></div>
+<div class="frow"><label>Your Phone / WhatsApp<input type="tel" id="fPhone" placeholder="03xx xxxxxxx" required></label><label>City / Venue<input type="text" id="fCity" placeholder="e.g. Lahore"></label></div>
+<label>Booking Details (optional)<textarea id="fDetails" rows="3" placeholder="Event type, guests, locations, anything you dream of…"></textarea></label>
+<button class="b1" type="submit" style="padding:19px 30px">Send Booking on WhatsApp ↗</button>
+<p class="form-note">Submitting opens WhatsApp with your booking pre-written — you just press send.</p>
 </form>
-<p class="fnote">Submitting opens WhatsApp with your booking already written — no forms lost in inboxes, no waiting on email. You just press send.</p></section>
+</div></section>
 
 <section id="contact"><div class="eb" style="justify-content:center">Booking</div>
 <h2>Your story deserves<br>to be remembered.</h2><p>Let's create something unforgettable. Pricing is shared on request.</p>
@@ -134,7 +146,7 @@ document.querySelectorAll('.wa').forEach(a=>a.href=waUrl());
 document.querySelectorAll('.book-btn').forEach(a=>a.addEventListener('click',()=>{$('#fService').value=a.dataset.service}));
 /* booking form → WhatsApp with everything pre-written */
 $('#bookForm').addEventListener('submit',e=>{e.preventDefault();const v=id=>document.getElementById(id).value.trim();
- const lines=[`Hi ${CONFIG.name}, I'd like to book a photography session.`,'',`• Service: ${v('fService')}`,`• Preferred date: ${v('fDate')}`,`• Time slot: ${v('fTime')}`,`• Name: ${v('fName')}`,`• My WhatsApp: ${v('fPhone')}`];
+ const lines=[`Hi ${CONFIG.name}, I'd like to book a photography session.`,'',`• Service: ${v('fService')}`,`• Preferred date: ${v('fDate')}`,`• Name: ${v('fName')}`,`• My WhatsApp: ${v('fPhone')}`];
  if(v('fCity'))lines.push(`• City / Venue: ${v('fCity')}`);if(v('fDetails'))lines.push(`• Details: ${v('fDetails')}`);
  lines.push('','Please share your availability and a quote. Thank you!');
  window.open(waUrl(lines.join('\n')),'_blank')});
